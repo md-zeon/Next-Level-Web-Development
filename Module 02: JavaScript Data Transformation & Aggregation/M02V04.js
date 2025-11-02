@@ -572,4 +572,42 @@ console.log("• Array.from() for creating arrays from various sources");
 console.log("• Combine techniques for complex data processing");
 console.log("• Consider performance implications for large datasets");
 
-//
+// module video task
+// some
+
+const numbersArr = [1, 2, 3, 4, 5];
+
+const hasOddNumber = numbersArr.some((number) => number % 2 === 1);
+
+console.log(hasOddNumber);
+
+const currentUserRoles = ["user", "editor", "admin"];
+const featureAccessRoles = ["admin", "manager"];
+
+const canAccess = currentUserRoles.some((role) => {
+	return featureAccessRoles.includes(role);
+});
+
+console.log("User has access:", canAccess);
+
+// Array.from()
+
+const arr = Array.from({ length: 5 }).fill(0);
+console.log(arr); // [0, 0, 0, 0, 0]
+
+const squares = Array.from({ length: 5 }, (_, i) => (i + 1) ** 2);
+console.log(squares); // [1, 4, 9, 16, 25]
+
+const array2 = Array.from({ length: 3 }, () =>
+	Array.from({ length: 3 }, () => 0),
+);
+console.log(array2); // [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+const rangeNumbers = (start, stop, step = 1) =>
+	Array.from(
+		{ length: Math.ceil((stop - start) / step) },
+		(_, i) => start + i * step,
+	);
+
+console.log(rangeNumbers(1, 10, 2)); // [1, 3, 5, 7, 9]
+console.log(rangeNumbers(5, 25, 5)); // [5, 10, 15, 20]
