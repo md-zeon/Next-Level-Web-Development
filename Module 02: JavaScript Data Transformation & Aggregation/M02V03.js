@@ -428,3 +428,44 @@ console.log("• sort() with compare functions for custom ordering");
 console.log("• flat() and flatMap() for handling nested structures");
 console.log("• Combine methods for complex data transformations");
 console.log("• Consider performance implications for large datasets");
+
+// Module video
+
+const numbersArr = [40, 100, 1, 5, 25, 10];
+
+const fruitsArr = ["Banana", "apple", "Orange", "mango"];
+// Sorting numbers with a compare function
+const sortedNumber = numbersArr.sort((a, b) => a - b); // Ascending order
+console.log("Original Numbers:", numbersArr); // Note: numbersArr is now sorted
+console.log("Sorted Numbers:", sortedNumber); // [1, 5, 10, 25, 40, 100]
+
+// for strings, default sort is lexicographical
+const sortedFruits = fruitsArr.sort();
+console.log("Original Fruits:", fruitsArr); // Note: fruitsArr is now sorted
+console.log("Sorted Fruits:", sortedFruits); // ["Banana", "Orange", "apple", "mango"]
+// So, the sort() method sorts the array in place and also returns the sorted array.
+// For numbers, a compare function is necessary to achieve numerical sorting.
+// For strings, the default behavior sorts them lexicographically.
+
+console.log(sortedFruits.sort((a, b) => a.localeCompare(b))); // Case-insensitive sort
+// Output: ["apple", "Banana", "mango", "Orange"]
+
+// nested array flattening
+const nestedArr = [1, 2, [3, 4], [5, [6, 7]], 8];
+
+//const flattenedOnce = nestedArr.flat(); // Default depth is 1
+//console.log("Flattened Once:", flattenedOnce); // [1, 2, 3, 4, 5, [6, 7], 8]
+
+//const fullyFlattened = nestedArr.flat(Infinity); // Flatten all levels
+// console.log("Fully Flattened:", fullyFlattened); // [1, 2, 3, 4, 5, 6, 7, 8]
+// The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+// Using Infinity as depth flattens all levels of nesting.
+
+const tagsFromPosts = [
+	["javascript", "react", "css"],
+	["nodejs", "express", "mongodb"],
+	["css", "html", "react"],
+];
+
+const filterTags = [...new Set(tagsFromPosts.flat())];
+console.log("Unique Tags:", filterTags); // ["javascript", "react", "css", "nodejs", "express", "mongodb", "html"]
