@@ -552,3 +552,36 @@ console.log(
 console.log("• Use appropriate initial values and accumulator patterns");
 console.log("• Combine with other methods for powerful data pipelines");
 console.log("• Consider performance implications for large datasets");
+
+// Module video works
+
+// count subtotal
+
+const cartItemsArr = [
+	{ id: "p-001", name: "Daraz Laptop Bag", price: 1500, quantity: 1 },
+	{ id: "p-002", name: "Wireless Mouse", price: 800, quantity: 2 },
+	{ id: "p-003", name: "16GB USB Drive", price: 600, quantity: 3 },
+	{ id: "p-004", name: "HDMI Cable", price: 300, quantity: 1 },
+];
+
+const subTotal = cartItemsArr.reduce((subtotal, item) => {
+	return subtotal + item.price * item.quantity;
+}, 0);
+
+console.log("Cart subtotal:", subTotal);
+
+// find best scorer
+
+const players = [
+	{ name: "John", score: 85 },
+	{ name: "Alice", score: 92 },
+	{ name: "Bob", score: 78 },
+	{ name: "Diana", score: 95 },
+	{ name: "Charlie", score: 88 },
+];
+
+const bestPlayer = players.reduce((best, player) => {
+	return player.score > best.score ? player : best;
+}, players[0]);
+
+console.log("Best player:", bestPlayer.name, "with score", bestPlayer.score);
