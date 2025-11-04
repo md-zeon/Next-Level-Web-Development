@@ -729,3 +729,39 @@ console.log("• Create lookup tables for O(1) data access");
 console.log("• Normalize data to reduce redundancy and improve consistency");
 console.log("• Use validation during normalization");
 console.log("• Consider performance implications for large datasets");
+
+// module tasks
+
+// generate lookup table
+
+//? Input
+const postsArray = [
+	{ id: "p-101", title: "Intro to JavaScript", author: "Alex" },
+	{ id: "p-102", title: "Advanced CSS Techniques", author: "Maria" },
+	{ id: "p-103", title: "Understanding HTML5", author: "John" },
+];
+
+const lookupTable = postsArray.reduce((table, post) => {
+	table[post.id] = post;
+	return table;
+}, {});
+
+console.log(lookupTable);
+
+//? Output
+/*
+{
+	"p-101": { id: "p-101", title: "Intro to JavaScript", author: "Alex" },
+	"p-102": { id: "p-102", title: "Advanced CSS Techniques", author: "Maria" },
+	"p-103": { id: "p-103", title: "Understanding HTML5", author: "John" },
+}
+*/
+
+// const post = postsArray.find((post) => post.id === "p-103"); // O(n)
+
+const post = lookupTable["p-103"]; // O(1)
+console.log(post);
+
+for (let postId in lookupTable) {
+	console.log(lookupTable[postId]);
+}
