@@ -309,3 +309,45 @@ const modern = new ModernClass(5);
 console.log(modern.arrowMethod());
 console.log(modern.regularMethod());
 console.log("Static field:", ModernClass.staticField);
+
+// Module video codes
+
+/*
+const createCounter = () => {
+	let count = 0;
+
+	return (amount) => {
+		count += amount;
+		return count;
+	};
+};
+
+const counterInstance = createCounter();
+console.log("Counter:", counterInstance(3)); // 3
+console.log("Counter:", counterInstance(2)); // 5
+
+*/
+
+class Counter {
+	constructor(count = 0) {
+		this.count = count;
+	}
+
+	add(amount) {
+		this.count += amount;
+		return this.count;
+	}
+
+	print() {
+		console.log(`Counter: ${this.count}`);
+	}
+}
+
+const counter1 = new Counter();
+counter1.add(3);
+counter1.add(2);
+counter1.print(); // 5
+
+const counter2 = new Counter(10);
+counter2.add(5);
+counter2.print(); // 15
