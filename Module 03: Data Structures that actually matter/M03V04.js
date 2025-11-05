@@ -9,13 +9,13 @@ class ArrayQueue {
 		this.items = [];
 	}
 
-	// Add element to the rear of queue
+	// Add element to the rear of queue => O(1)
 	enqueue(element) {
 		this.items.push(element);
 		console.log(`Enqueued: ${element}`);
 	}
 
-	// Remove and return front element
+	// Remove and return front element => O(n)
 	dequeue() {
 		if (this.isEmpty()) {
 			console.log("Queue is empty - cannot dequeue");
@@ -26,7 +26,7 @@ class ArrayQueue {
 		return dequeued;
 	}
 
-	// Return front element without removing it
+	// Return front element without removing it => O(1)
 	front() {
 		if (this.isEmpty()) {
 			console.log("Queue is empty - cannot peek front");
@@ -35,7 +35,7 @@ class ArrayQueue {
 		return this.items[0];
 	}
 
-	// Return rear element without removing it
+	// Return rear element without removing it => O(1)
 	rear() {
 		if (this.isEmpty()) {
 			console.log("Queue is empty - cannot peek rear");
@@ -44,23 +44,23 @@ class ArrayQueue {
 		return this.items[this.items.length - 1];
 	}
 
-	// Check if queue is empty
+	// Check if queue is empty => O(1)
 	isEmpty() {
 		return this.items.length === 0;
 	}
 
-	// Return size of queue
+	// Return size of queue => O(1)
 	size() {
 		return this.items.length;
 	}
 
-	// Clear the queue
+	// Clear the queue => O(1)
 	clear() {
 		this.items = [];
 		console.log("Queue cleared");
 	}
 
-	// Print queue contents
+	// Print queue contents => O(n)
 	print() {
 		console.log("Queue contents (front to rear):", this.items);
 	}
@@ -602,3 +602,74 @@ console.log("✓ Advanced: Queue using stacks, priority queues, deques");
 console.log(
 	"✓ Performance: Circular queue generally better for frequent operations",
 );
+
+// Module video codes
+
+class Queue {
+	constructor() {
+		this.items = [];
+	}
+
+	//* O(1)
+	enqueue(item) {
+		this.items.push(item);
+	}
+
+	//* O(n)
+	dequeue() {
+		if (this.isEmpty()) {
+			console.log("Queue is empty - cannot dequeue");
+			return null;
+		}
+		return this.items.shift();
+	}
+
+	//* O(1)
+	peek() {
+		if (this.isEmpty()) return null;
+		return this.items[0];
+	}
+
+	//* O(1)
+	rear() {
+		if (this.isEmpty()) return null;
+		return this.items[this.size() - 1];
+	}
+
+	//* O(1)
+	isEmpty() {
+		return this.items.length === 0;
+	}
+
+	//* O(1)
+	size() {
+		return this.items.length;
+	}
+
+	//* O(1)
+	clear() {
+		this.items = [];
+		console.log("Queue cleared");
+	}
+
+	//* O(n)
+	print() {
+		console.log("Start => ", this.items.join(" => "), " <= End");
+	}
+}
+
+// Example usage:
+const queue = new Queue();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+queue.print(); // Start =>  1 => 2 => 3  <= End
+
+console.log("Dequeued:", queue.dequeue()); // Dequeued: 1
+console.log("Front element:", queue.peek()); // Front element: 2
+console.log("Rear element:", queue.rear()); // Rear element: 3
+console.log("Is empty?", queue.isEmpty()); // Is empty? false
+console.log("Size:", queue.size()); // Size: 2
+
+queue.clear(); // Queue cleared
+queue.print(); // Start =>   <= End
