@@ -627,6 +627,11 @@ function generatePredictiveAnalytics(data, sensorId) {
 		hourlyPatterns[hour].push(binned[ts].temperature?.avg);
 	});
 
+	function average(arr) {
+		const validValues = arr.filter((v) => v != null);
+		return validValues.reduce((sum, v) => sum + v, 0) / validValues.length || 0;
+	}
+
 	const seasonalPatterns = {
 		daily: {
 			peakHours: Object.keys(hourlyPatterns)
@@ -879,3 +884,44 @@ module.exports = {
 	generatePredictiveAnalytics,
 	RealTimeBinner,
 };
+
+// * Binning (Resampling) Time Series Data
+
+// Scenario: You have a long list of user click events.
+// You need to "bin" these events into 30 minute intervals and count them to see engagement over time.
+
+//? Input
+const events = [
+	{ timestamp: "2025-10-22T10:01:00Z", type: "click" },
+	{ timestamp: "2025-10-22T10:05:00Z", type: "scroll" },
+	{ timestamp: "2025-10-22T10:14:00Z", type: "click" },
+	{ timestamp: "2025-10-22T10:31:00Z", type: "click" },
+	{ timestamp: "2025-10-22T10:45:00Z", type: "scroll" },
+	{ timestamp: "2025-10-22T11:02:00Z", type: "click" },
+];
+
+const getBinnedTimeStamp = (timestamp, binSize = 30) => {
+	const date = new Date(timestamp);
+	const minutes = date.getMinutes();
+	const roundedMinutes = Math.floor(minutes / binSize) * binSize;
+	date.setMinutes(roundedMinutes, 0, 0);
+	return date.toISOString();
+};
+
+const binnedEvents = events.reduce((acc, event) => {
+	const binKey = getBinnedTimeStamp(event.timestamp, 30);
+	if (!acc[binKey]) {
+		acc[binKey] = { total: 0 };
+	}
+	acc[binKey].total += 1;
+	return acc;
+}, {});
+
+console.log("Binned Events:", binnedEvents);
+
+//? Output
+// binnedEvents = {
+//   "2025-10-22T10:00:00.000Z": { "total": 3 },
+//   "2025-10-22T10:30:00.000Z": { "total": 2 },
+//   "2025-10-22T11:00:00.000Z": { "total": 1 }
+// }
