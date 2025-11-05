@@ -484,3 +484,66 @@ console.log(
 console.log(
 	"✓ Performance: Both implementations offer O(1) for core operations",
 );
+
+// Module Video codes
+
+class Stack {
+	constructor() {
+		this.items = [];
+	}
+
+	// Add element to top of stack => O(1)
+	push(value) {
+		this.items.push(value);
+	}
+
+	// Remove and return top element => O(1)
+	pop() {
+		if (this.isEmpty()) {
+			return null;
+		}
+
+		return this.items.pop();
+	}
+
+	// Return top element without removing it => O(1)
+	peek() {
+		if (this.isEmpty()) {
+			return null;
+		}
+		return this.items[this.size() - 1];
+	}
+
+	// Return size of stack => O(1)
+	size() {
+		return this.items.length;
+	}
+
+	// Check if stack is empty => O(1)
+	isEmpty() {
+		return this.size() === 0;
+	}
+
+	// Print stack contents => O(n)
+	print() {
+		console.log(this.items.slice().reverse().join(" => "));
+	}
+}
+
+const stack = new Stack();
+stack.push(1);
+stack.push(2);
+stack.push(3);
+stack.print(); // 3 => 2 => 1
+console.log("Size:", stack.size()); // 3
+
+console.log("Popped:", stack.pop()); // 3
+console.log("Peek:", stack.peek()); // 2
+console.log("Is Empty:", stack.isEmpty()); // false
+stack.print(); // 2 => 1
+console.log("Size:", stack.size()); // 2
+console.log("Popped:", stack.pop()); // 2
+console.log("Popped:", stack.pop()); // 1
+console.log("Is Empty:", stack.isEmpty()); // true
+stack.print(); // (prints nothing)
+console.log("Popped:", stack.pop()); // null
