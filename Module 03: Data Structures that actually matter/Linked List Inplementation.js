@@ -85,6 +85,34 @@ class LinkedList {
 		return this; // For method chaining
 	}
 
+	remove(index) {
+		if (index < 0 || index >= this.length) {
+			console.error("Index out of bounds");
+			return;
+		}
+		// Remove from beginning
+		if (index === 0) {
+			this.head = this.head.next;
+			// If the list had only one node
+			if (this.length === 1) {
+				this.tail = null;
+			}
+			this.length--;
+			return this; // For method chaining
+		}
+
+		// Remove from middle
+		const leadingNode = this._traverseToIndex(index - 1);
+		const removedNode = leadingNode.next;
+		leadingNode.next = removedNode.next;
+		// If removing the tail
+		if (index === this.length - 1) {
+			this.tail = leadingNode;
+		}
+		this.length--;
+		return this; // For method chaining
+	}
+
 	print() {
 		const elements = [];
 		let currentNode = this.head;
@@ -95,6 +123,13 @@ class LinkedList {
 		}
 		elements.push("null");
 		console.log(elements.join(" -> "));
+	}
+
+	clear() {
+		this.head = null;
+		this.tail = null;
+		this.length = 0;
+		return this; // For method chaining
 	}
 }
 
@@ -122,3 +157,20 @@ list.append(40).prepend(1).insert(25, 5);
 console.log("After chaining operations:");
 list.print(); // Outputs: 1, 5, 10, 15, 20, 25, 30, 40
 console.log("Length of the list after chaining:", list.length); // Outputs: 8
+
+// Remove example
+list.remove(3);
+console.log("After removing element at index 3:");
+list.print(); // Outputs: 1, 5, 10, 20, 25, 30, 40
+list.remove(0);
+console.log("After removing element at index 0:");
+list.print(); // Outputs: 5, 10, 20, 25, 30, 40
+list.remove(list.length - 1);
+console.log("After removing last element:");
+list.print(); // Outputs: 5, 10, 20, 25, 30
+console.log("Length of the list after removal:", list.length); // Outputs: 7
+// Clear example
+list.clear();
+console.log("After clearing the list:");
+list.print(); // Outputs: null
+console.log("Length of the list after clearing:", list.length); // Outputs: 0
