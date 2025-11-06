@@ -40,6 +40,41 @@ class LinkedList {
 		this.length++;
 	}
 
+	insert(data, index) {
+		if (index < 0 || index > this.length) {
+			console.error("Index out of bounds");
+			return;
+		}
+		const newNode = new Node(data);
+
+		// Insert at the beginning
+		if (index === 0) {
+			this.prepend(data);
+			return;
+		}
+		// Insert at the end
+		if (index === this.length) {
+			this.append(data);
+			return;
+		}
+
+		// Insert in the middle
+
+		// find the leading node
+
+		let count = 0;
+		let leadingNode = this.head;
+
+		while (count != index - 1) {
+			leadingNode = leadingNode.next;
+			count++;
+		}
+		// Adjust the pointers
+		newNode.next = leadingNode.next;
+		leadingNode.next = newNode;
+		this.length++;
+	}
+
 	print() {
 		const elements = [];
 		let currentNode = this.head;
@@ -65,3 +100,7 @@ list.print(); // Outputs: 10, 20, 30
 list.prepend(5);
 console.log("After prepending 5:");
 list.print(); // Outputs: 5, 10, 20, 30
+
+list.insert(15, 2);
+console.log("After inserting 15 at index 2:");
+list.print(); // Outputs: 5, 10, 15, 20, 30
