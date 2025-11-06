@@ -24,6 +24,7 @@ class LinkedList {
 			this.tail = newNode;
 		}
 		this.length++;
+		return this; // For method chaining
 	}
 
 	prepend(data) {
@@ -38,6 +39,20 @@ class LinkedList {
 			this.head = newNode;
 		}
 		this.length++;
+		return this; // For method chaining
+	}
+
+	// Helper method to traverse to a specific index
+	// _ Indicates that this is a private method and should not be used outside the class
+	_traverseToIndex(index) {
+		let count = 0;
+		let currentNode = this.head;
+
+		while (count !== index) {
+			currentNode = currentNode.next;
+			count++;
+		}
+		return currentNode;
 	}
 
 	insert(data, index) {
@@ -50,29 +65,24 @@ class LinkedList {
 		// Insert at the beginning
 		if (index === 0) {
 			this.prepend(data);
-			return;
+			return this; // For method chaining
 		}
 		// Insert at the end
 		if (index === this.length) {
 			this.append(data);
-			return;
+			return this; // For method chaining
 		}
 
 		// Insert in the middle
 
 		// find the leading node
-
-		let count = 0;
-		let leadingNode = this.head;
-
-		while (count != index - 1) {
-			leadingNode = leadingNode.next;
-			count++;
-		}
+		const leadingNode = this._traverseToIndex(index - 1);
 		// Adjust the pointers
-		newNode.next = leadingNode.next;
+		const holdingNode = leadingNode.next;
 		leadingNode.next = newNode;
+		newNode.next = holdingNode;
 		this.length++;
+		return this; // For method chaining
 	}
 
 	print() {
@@ -104,3 +114,11 @@ list.print(); // Outputs: 5, 10, 20, 30
 list.insert(15, 2);
 console.log("After inserting 15 at index 2:");
 list.print(); // Outputs: 5, 10, 15, 20, 30
+
+console.log("Length of the list:", list.length); // Outputs: 5
+
+// Chaining example
+list.append(40).prepend(1).insert(25, 5);
+console.log("After chaining operations:");
+list.print(); // Outputs: 1, 5, 10, 15, 20, 25, 30, 40
+console.log("Length of the list after chaining:", list.length); // Outputs: 8
