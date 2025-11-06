@@ -26,6 +26,20 @@ class LinkedList {
 		this.length++;
 	}
 
+	prepend(data) {
+		const newNode = new Node(data);
+		// If the list is empty
+		if (this.head === null) {
+			this.head = newNode;
+			this.tail = newNode;
+		} else {
+			// If the list is not empty
+			newNode.next = this.head;
+			this.head = newNode;
+		}
+		this.length++;
+	}
+
 	print() {
 		const elements = [];
 		let currentNode = this.head;
@@ -47,3 +61,7 @@ list.append(30);
 
 console.log("Linked List contents:");
 list.print(); // Outputs: 10, 20, 30
+
+list.prepend(5);
+console.log("After prepending 5:");
+list.print(); // Outputs: 5, 10, 20, 30
