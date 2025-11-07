@@ -15,7 +15,18 @@ import Stack from "./lib/Stack.js";
 //? "(]" -> false
 //? "(()" -> false
 
-const isValid = (str) => {
+const isValid = (char, top) => {
+	if (
+		(char === ")" && top !== "(") ||
+		(char === "}" && top !== "{") ||
+		(char === "]" && top !== "[")
+	) {
+		return false;
+	}
+	return true;
+};
+
+const isValidParentheses = (str) => {
 	const stack = new Stack();
 	for (let char of str) {
 		if (char === "(" || char === "{" || char === "[") {
@@ -23,11 +34,7 @@ const isValid = (str) => {
 		} else {
 			if (stack.isEmpty()) return false;
 			const top = stack.pop();
-			if (
-				(char === ")" && top !== "(") ||
-				(char === "}" && top !== "{") ||
-				(char === "]" && top !== "[")
-			) {
+			if (!isValid(char, top)) {
 				return false;
 			}
 		}
@@ -35,8 +42,10 @@ const isValid = (str) => {
 	return stack.isEmpty();
 };
 
-console.log(isValid("()[]{}")); // true
-console.log(isValid("([{}])")); // true
-console.log(isValid("(]")); // false
-console.log(isValid("(()")); // false
-console.log(isValid("((()))")); // true
+console.log(isValidParentheses("()[]{}")); // true
+console.log(isValidParentheses("([{}])")); // true
+console.log(isValidParentheses("(]")); // false
+console.log(isValidParentheses("(()")); // false
+console.log(isValidParentheses("((()))")); // true
+console.log(isValidParentheses("{[([][{}])]}")); // true
+console.log(isValidParentheses("{{[[(())]]}}{")); // false
