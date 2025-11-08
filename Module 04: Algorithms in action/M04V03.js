@@ -42,6 +42,7 @@ const isValidParentheses = (str) => {
 	return stack.isEmpty();
 };
 
+console.log("My Solution:");
 console.log(isValidParentheses("()[]{}")); // true
 console.log(isValidParentheses("([{}])")); // true
 console.log(isValidParentheses("(]")); // false
@@ -49,3 +50,37 @@ console.log(isValidParentheses("(()")); // false
 console.log(isValidParentheses("((()))")); // true
 console.log(isValidParentheses("{[([][{}])]}")); // true
 console.log(isValidParentheses("{{[[(())]]}}{")); // false
+
+// Instructor's Solution
+const bracketChecker = (str) => {
+	const stack = new Stack();
+
+	const bracketMap = {
+		")": "(",
+		"}": "{",
+		"]": "[",
+	};
+	// Traverse through each character in the string
+	for (let i = 0; i < str.length; i++) {
+		const char = str[i];
+		// If it's an opening bracket, push it onto the stack
+		if (char === "(" || char === "{" || char === "[") {
+			stack.push(char);
+		} else if (char === ")" || char === "}" || char === "]") {
+			// If it's a closing bracket, check for matching opening bracket
+			if (stack.isEmpty() || stack.pop() !== bracketMap[char]) {
+				return false;
+			}
+		}
+	}
+	// If stack is empty, all opening brackets were properly closed
+	return stack.isEmpty();
+};
+
+console.log("Instructor's Solution:");
+
+console.log(bracketChecker("()[]{}")); // true
+console.log(bracketChecker("([{}])")); // true
+console.log(bracketChecker("(]")); // false
+console.log(bracketChecker("(()")); // false
+console.log(bracketChecker("((()))")); // true
