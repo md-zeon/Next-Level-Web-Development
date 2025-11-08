@@ -28,6 +28,43 @@ function twoSum(numbers, target) {
 	return undefined; // Return undefined if no solution is found
 }
 
+// O(n^2) Solution using Brute Force
+
+function twoSumBruteForce(numbers, target) {
+	for (let i = 0; i < numbers.length; i++) {
+		for (let j = i + 1; j < numbers.length; j++) {
+			if (numbers[i] + numbers[j] === target) {
+				return [i, j];
+			}
+		}
+	}
+	return undefined; // Return undefined if no solution is found
+}
+
+// O(n log n) Solution using Sorting and Two Pointers
+
+function twoSumSorting(numbers, target) {
+	const indexedNumbers = numbers.map((num, index) => ({ num, index }));
+	indexedNumbers.sort((a, b) => a.num - b.num);
+
+	let left = 0;
+	let right = indexedNumbers.length - 1;
+
+	while (left < right) {
+		const sum = indexedNumbers[left].num + indexedNumbers[right].num;
+
+		if (sum === target) {
+			return [indexedNumbers[left].index, indexedNumbers[right].index];
+		} else if (sum < target) {
+			left++;
+		} else {
+			right--;
+		}
+	}
+
+	return undefined; // Return undefined if no solution is found
+}
+
 // Instructor's Solution
 function twoSumInstructor(arr, target) {
 	const numMap = new Map();
@@ -50,8 +87,9 @@ function twoSumInstructor(arr, target) {
 console.log("My Solution:");
 const numbers = [2, 11, 7, 15];
 const target = 9;
-const result = twoSum(numbers, target);
-console.log(result); // Output: [0, 2]
+console.log("O(n): ", twoSum(numbers, target)); // Output: [0, 2]
+console.log("O(n^2): ", twoSumBruteForce(numbers, target)); // Output: [0, 2]
+console.log("O(n log n): ", twoSumSorting(numbers, target)); // Output: [0, 2]
 
 console.log("Instructor's Solution:");
-console.log(twoSumInstructor(numbers, target)); // Output: [0, 2]
+console.log("O(n): ", twoSumInstructor(numbers, target)); // Output: [0, 2]
