@@ -24,10 +24,34 @@ function twoSum(numbers, target) {
 		}
 		numMap.set(numbers[i], i);
 	}
+
+	return undefined; // Return undefined if no solution is found
+}
+
+// Instructor's Solution
+function twoSumInstructor(arr, target) {
+	const numMap = new Map();
+
+	for (let i = 0; i < arr.length; i++) {
+		const currentNum = arr[i];
+		const complement = target - currentNum;
+
+		if (numMap.has(complement)) {
+			return [numMap.get(complement), i];
+		}
+
+		numMap.set(currentNum, i);
+	}
+
+	return undefined; // Return undefined if no solution is found
 }
 
 // Example usage:
+console.log("My Solution:");
 const numbers = [2, 11, 7, 15];
 const target = 9;
 const result = twoSum(numbers, target);
 console.log(result); // Output: [0, 2]
+
+console.log("Instructor's Solution:");
+console.log(twoSumInstructor(numbers, target)); // Output: [0, 2]
