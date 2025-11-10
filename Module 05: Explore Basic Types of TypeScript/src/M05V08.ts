@@ -1,14 +1,13 @@
 // Spread Operator
 
-const friends = ["Rahim", "Karim", "Jabbar"];
+const friends: string[] = ["Rahim", "Karim", "Jabbar"];
 
 console.log("Original friends array:", friends);
 
-const schoolFriends = ["Anwar", "Barkat", "Salam"];
-
+const schoolFriends: string[] = ["Anwar", "Barkat", "Salam"];
 console.log("School friends array:", schoolFriends);
 
-const collegeFriends = ["Kalam", "Rafiq", "Majid"];
+const collegeFriends: string[] = ["Kalam", "Rafiq", "Majid"];
 
 console.log("College friends array:", collegeFriends);
 
@@ -20,10 +19,32 @@ friends.push(...collegeFriends);
 
 console.log("Friends after adding college friends:", friends);
 
-const user = { name: "Zeon", phoneNo: "017XXXXXXXX" };
+const user: { name: string; phoneNo: string } = {
+	name: "Zeon",
+	phoneNo: "017XXXXXXXX",
+};
 
-const otherInfo = { hobby: "Reading", favColor: "Blue" };
+const otherInfo: { hobby: string; favColor: string } = {
+	hobby: "Reading",
+	favColor: "Blue",
+};
 
-const userInfo = { ...user, ...otherInfo };
+const userInfo: {
+	name: string;
+	phoneNo: string;
+	hobby: string;
+	favColor: string;
+} = { ...user, ...otherInfo };
 
 console.log("Combined user info:", userInfo);
+
+// rest operator
+
+// rest operator to gather arguments into an array
+const sendInvitation = (...friends: string[]): void => {
+	friends.forEach((friend) => {
+		console.log(`Invitation sent to: ${friend}`);
+	});
+};
+
+sendInvitation(...friends); // spread operator to pass array elements as individual arguments
