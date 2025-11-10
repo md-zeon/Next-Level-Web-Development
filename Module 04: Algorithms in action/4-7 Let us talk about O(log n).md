@@ -55,6 +55,36 @@ Searching for target = 13:
 
 The search took 4 steps for n = 10. In general, it takes log₂(n) + 1 steps in the worst case.
 
+## Dry Run of Binary Search
+
+A dry run is a manual simulation of the algorithm's execution. Here's the pseudocode for binary search:
+
+```
+function binarySearch(arr, target):
+    left = 0
+    right = arr.length - 1
+    while left <= right:
+        mid = left + floor((right - left) / 2)
+        if arr[mid] == target:
+            return mid
+        else if arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+Dry run for array `[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]`, target = 13:
+
+| Step | left | right | mid | arr[mid] | Comparison | Action |
+|------|------|-------|-----|----------|------------|--------|
+| 1 | 0 | 9 | 4 | 9 | 9 < 13 | left = 5 |
+| 2 | 5 | 9 | 7 | 15 | 15 > 13 | right = 6 |
+| 3 | 5 | 6 | 5 | 11 | 11 < 13 | left = 6 |
+| 4 | 6 | 6 | 6 | 13 | 13 == 13 | return 6 |
+
+This dry run confirms the algorithm finds the target in O(log n) steps.
+
 ## Calculating Time Complexity
 
 To calculate O(log n), consider how many times we can divide n by 2 until we reach 1:
