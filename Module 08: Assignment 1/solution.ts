@@ -84,11 +84,11 @@ const filterActiveUsers = (users: User[]): User[] => {
 	return users.filter((user: User) => user.isActive === true);
 };
 
-const users: User[] = [
-	{ id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
-	{ id: 2, name: "Asha", email: "asha@example.com", isActive: false },
-	{ id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
-];
+// const users: User[] = [
+// 	{ id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
+// 	{ id: 2, name: "Asha", email: "asha@example.com", isActive: false },
+// 	{ id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
+// ];
 
 // console.log(filterActiveUsers(users));
 // console.log(users);
@@ -111,11 +111,46 @@ const printBookDetails = (book: Book): void => {
 	);
 };
 
-const myBook: Book = {
-	title: "The Great Gatsby",
-	author: "F. Scott Fitzgerald",
-	publishedYear: 1925,
-	isAvailable: true,
+// const myBook: Book = {
+// 	title: "The Great Gatsby",
+// 	author: "F. Scott Fitzgerald",
+// 	publishedYear: 1925,
+// 	isAvailable: true,
+// };
+
+// printBookDetails(myBook);
+
+// Problem 07:
+
+type UniqueArrayType = (string | number)[];
+
+const getUniqueValues = (
+	arr1: UniqueArrayType,
+	arr2: UniqueArrayType,
+): UniqueArrayType => {
+	const uniqueValues: UniqueArrayType = [];
+
+	const unique: { [key: string]: boolean } = {};
+
+	for (let i = 0; i < arr1.length; i++) {
+		const value = arr1[i];
+		if (!unique[value]) {
+			uniqueValues.push(value);
+			unique[value] = true;
+		}
+	}
+
+	for (let i = 0; i < arr2.length; i++) {
+		const value = arr2[i];
+		if (!unique[value]) {
+			uniqueValues.push(value);
+			unique[value] = true;
+		}
+	}
+
+	return uniqueValues;
 };
 
-printBookDetails(myBook);
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+console.log(getUniqueValues(array1, array2));
