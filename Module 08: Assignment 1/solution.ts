@@ -151,6 +151,38 @@ const getUniqueValues = (
 	return uniqueValues;
 };
 
-const array1 = [1, 2, 3, 4, 5];
-const array2 = [3, 4, 5, 6, 7];
-console.log(getUniqueValues(array1, array2));
+// const array1 = [1, 2, 3, 4, 5];
+// const array2 = [3, 4, 5, 6, 7];
+// console.log(getUniqueValues(array1, array2));
+
+// Problem 08:
+
+interface Product {
+	name: string;
+	price: number;
+	quantity: number;
+	discount?: number;
+}
+
+const calculateTotalPrice = (products: Product[]): number => {
+	if (products.length === 0) {
+		return 0;
+	}
+	return products.reduce((totalPrice, product) => {
+		totalPrice += product.price * product.quantity;
+		if (product.discount) {
+			const discountAmount =
+				product.price * (product.discount / 100) * product.quantity;
+			totalPrice -= discountAmount;
+		}
+		return totalPrice;
+	}, 0);
+};
+
+const products: Product[] = [
+	{ name: "Pen", price: 10, quantity: 2 },
+	{ name: "Notebook", price: 25, quantity: 3, discount: 10 },
+	{ name: "Bag", price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products));
