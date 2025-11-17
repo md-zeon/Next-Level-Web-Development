@@ -90,5 +90,32 @@ const users: User[] = [
 	{ id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
 ];
 
-console.log(filterActiveUsers(users));
-console.log(users);
+// console.log(filterActiveUsers(users));
+// console.log(users);
+
+// Problem 06:
+
+interface Book {
+	title: string;
+	author: string;
+	publishedYear: number;
+	isAvailable: boolean;
+}
+
+const printBookDetails = (book: Book): void => {
+	const { author, isAvailable, publishedYear, title } = book;
+	console.log(
+		`Title: ${title}, Author: ${author}, Published: ${publishedYear}, Available: ${
+			isAvailable ? "Yes" : "No"
+		}`,
+	);
+};
+
+const myBook: Book = {
+	title: "The Great Gatsby",
+	author: "F. Scott Fitzgerald",
+	publishedYear: 1925,
+	isAvailable: true,
+};
+
+printBookDetails(myBook);
