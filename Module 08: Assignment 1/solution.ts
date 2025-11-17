@@ -68,5 +68,27 @@ const books = [
 	{ title: "Book C", rating: 5.0 },
 ];
 
-console.log(filterByRating(books));
-console.log(books);
+// console.log(filterByRating(books));
+// console.log(books);
+
+// Problem 05:
+
+interface User {
+	id: number;
+	name: string;
+	email: string;
+	isActive: boolean;
+}
+
+const filterActiveUsers = (users: User[]): User[] => {
+	return users.filter((user: User) => user.isActive === true);
+};
+
+const users: User[] = [
+	{ id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
+	{ id: 2, name: "Asha", email: "asha@example.com", isActive: false },
+	{ id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
+];
+
+console.log(filterActiveUsers(users));
+console.log(users);
