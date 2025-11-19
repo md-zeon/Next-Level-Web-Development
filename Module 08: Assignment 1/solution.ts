@@ -41,15 +41,15 @@ class Person {
 	}
 
 	getDetails(): string {
-		return `"Name: ${this.name}, Age: ${this.age}"`;
+		return `'Name: ${this.name}, Age: ${this.age}'`;
 	}
 }
 
-// const person1 = new Person("John Doe", 30);
-// console.log(person1.getDetails());
+const person1 = new Person("John Doe", 30);
+console.log(person1.getDetails());
 
-// const person2 = new Person("Alice", 25);
-// console.log(person2.getDetails());
+const person2 = new Person("Alice", 25);
+console.log(person2.getDetails());
 
 // Problem 04:
 
@@ -122,7 +122,7 @@ const printBookDetails = (book: Book): void => {
 
 // Problem 07:
 
-type UniqueArrayType = (string | number)[];
+type UniqueArrayType = string[] | number[];
 
 const getUniqueValues = (
 	arr1: UniqueArrayType,
@@ -131,11 +131,12 @@ const getUniqueValues = (
 	const uniqueValues: UniqueArrayType = [];
 
 	const unique: { [key: string]: boolean } = {};
+	let index = 0;
 
 	for (let i = 0; i < arr1.length; i++) {
 		const value = arr1[i];
 		if (!unique[value]) {
-			uniqueValues.push(value);
+			uniqueValues[index++] = value;
 			unique[value] = true;
 		}
 	}
@@ -143,7 +144,7 @@ const getUniqueValues = (
 	for (let i = 0; i < arr2.length; i++) {
 		const value = arr2[i];
 		if (!unique[value]) {
-			uniqueValues.push(value);
+			uniqueValues[index++] = value;
 			unique[value] = true;
 		}
 	}
@@ -151,9 +152,9 @@ const getUniqueValues = (
 	return uniqueValues;
 };
 
-// const array1 = [1, 2, 3, 4, 5];
-// const array2 = [3, 4, 5, 6, 7];
-// console.log(getUniqueValues(array1, array2));
+const array1: UniqueArrayType = ["1", "2", "3", "4", "5"];
+const array2: UniqueArrayType = [3, 4, 5, 6, 7];
+console.log(getUniqueValues(array1, array2));
 
 // Problem 08:
 
@@ -185,4 +186,4 @@ const products: Product[] = [
 	{ name: "Bag", price: 50, quantity: 1, discount: 20 },
 ];
 
-console.log(calculateTotalPrice(products));
+// console.log(calculateTotalPrice(products));

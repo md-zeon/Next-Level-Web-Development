@@ -247,7 +247,7 @@ console.log(calculateTotalPrice(products));
 
 ## 🎯 Interview Questions - Blog Task
 
-### Blog Post (in Bangla): Answer any 2 of the questions below:
+### Blog Post (in Bangla): Answer the questions below:
 
 1. What are some differences between interfaces and types in TypeScript?
 2. What is the use of the `keyof` keyword in TypeScript? Provide an example.
@@ -257,7 +257,7 @@ console.log(calculateTotalPrice(products));
 
 ## ✅ Instructions & Submission Guidelines:
 
-- **Blog:** Write a blog post on **any 2** of the provided topics and include it in this `README.md`.
+- **Blog:** Write a blog post on the provided topics and include it in the `Blog.md`.
 - **Coding:**
   - Place all your solutions in a single TypeScript file (e.g., [solution.ts](./solution.ts)).
   - Use the exact function names provided in the problems.
@@ -266,7 +266,7 @@ console.log(calculateTotalPrice(products));
   - Do not include comments like “Problem 1” in your code.
   - Do not include any `console.log` in your final code.
 - **Originality:** All work must be original. Plagiarism will result in a **zero**.
-- **Submission:** Submit a single public GitHub repository which will includes your [solution.ts](./solution.ts) file and the updated `README.md`.
+- **Submission:** Submit a single public GitHub repository which will includes your [solution.ts](./solution.ts) file and the updated `Blog.md`.
 
 ## 🕒 Assignment Deadlines:
 
