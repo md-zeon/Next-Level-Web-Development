@@ -127,7 +127,3 @@ Understanding how the web works provides a solid foundation for web development.
 - Frontend handles presentation, backend manages business logic and data
 - Security, state management, and scalability are crucial considerations
 - The web continues to evolve with new technologies and paradigms
-
-## Next Steps
-
-In the following lessons, we'll dive into building web applications using Node.js, starting with setting up a basic server and handling HTTP requests.

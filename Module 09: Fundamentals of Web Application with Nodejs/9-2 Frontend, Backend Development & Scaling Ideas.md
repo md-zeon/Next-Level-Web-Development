@@ -306,7 +306,3 @@ app.get("/expensive-operation/:id", (req, res) => {
 - **Scaling** requires careful consideration of load balancing, caching, and architecture patterns
 - Performance optimization applies to both client and server sides
 - Monitoring and automation are crucial for maintaining scalable systems
-
-## Next Steps
-
-The following lessons will dive deeper into building Node.js applications, starting with creating your first HTTP server and handling basic routing. Understanding these scaling concepts will help you build applications that can grow with your user base.

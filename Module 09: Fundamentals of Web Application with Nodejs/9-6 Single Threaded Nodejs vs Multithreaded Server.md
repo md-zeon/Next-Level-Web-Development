@@ -500,7 +500,3 @@ The choice isn't about which is "better" but rather which is better suited to yo
 - **Complexity**: Multithreaded has synchronization challenges
 - **Scaling**: Node.js scales horizontally; multithreaded can do both
 - **Appropriate Use**: Choose based on I/O vs CPU requirements
-
-## Next Steps
-
-Understanding these architectural differences will help you design better systems. The following lessons will dive deeper into practical Node.js development, including creating HTTP servers, handling routing, and building real applications that leverage its unique strengths in event-driven programming.

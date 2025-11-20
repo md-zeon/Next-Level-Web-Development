@@ -569,7 +569,3 @@ Understanding these concepts is essential for writing high-performance Node.js a
 - **Streams** provide efficient data processing without loading everything into memory
 - **Avoid blocking operations** to prevent event loop starvation
 - **Event emitters** enable custom event-driven architectures
-
-## Next Steps
-
-With a solid understanding of Node.js's event-driven architecture, you're ready for hands-on development. The next lessons will guide you through creating HTTP servers, handling routing, working with databases, and building real-world applications using these event-driven principles.

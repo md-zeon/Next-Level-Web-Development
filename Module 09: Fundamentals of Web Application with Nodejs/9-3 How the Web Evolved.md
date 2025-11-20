@@ -239,7 +239,3 @@ The web's evolution represents constant adaptation to new technologies, user nee
 - **Future Trends** will involve AI, edge computing, and immersive experiences
 
 Understanding this evolution helps developers make informed decisions about technologies and architectures for building robust, scalable web applications.
-
-## Next Steps
-
-As we move into more practical Node.js development in the coming lessons, keep this evolution in mind. The transition from Web 2.0 to more advanced architectures will influence how you think about application design, scalability, and user interaction patterns.

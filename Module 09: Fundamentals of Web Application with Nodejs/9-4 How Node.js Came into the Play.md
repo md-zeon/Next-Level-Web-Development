@@ -366,7 +366,3 @@ Its impact extends beyond technology: Node.js influenced how developers think ab
 - **Enterprise adoption** validated Node.js for production use
 
 Node.js didn't just add another option to the server-side technology stack—it fundamentally changed how web applications are built and scaled.
-
-## Next Steps
-
-Now that you understand Node.js origins, the following lessons will dive into practical Node.js development. You'll learn to create your first server, handle HTTP requests, work with APIs, and build real applications using this revolutionary platform.
